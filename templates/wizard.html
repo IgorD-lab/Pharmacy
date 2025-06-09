@@ -1,0 +1,577 @@
+{% extends "base.html" %}
+
+{% block title %}Process Prescription #{{ prescription.id }} - Pharmacy System{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-4">
+    <!-- Header -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center">
+                <h2 class="text-primary">
+                    <i class="fas fa-cog me-2"></i>
+                    Process Prescription #{{ prescription.id }}
+                </h2>
+                <a href="{{ url_for('dashboard') }}" class="btn btn-outline-secondary">
+                    <i class="fas fa-arrow-left me-1"></i>Back to Dashboard
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Progress Steps -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="progress-steps">
+                        <div class="step" data-step="1">
+                            <div class="step-number">1</div>
+                            <div class="step-title">Prescription Validation</div>
+                        </div>
+                        <div class="step" data-step="2">
+                            <div class="step-number">2</div>
+                            <div class="step-title">Doctor Verification</div>
+                        </div>
+                        <div class="step" data-step="3">
+                            <div class="step-number">3</div>
+                            <div class="step-title">Patient Identity</div>
+                        </div>
+                        <div class="step" data-step="4">
+                            <div class="step-number">4</div>
+                            <div class="step-title">Prescription History</div>
+                        </div>
+                        <div class="step" data-step="5">
+                            <div class="step-number">5</div>
+                            <div class="step-title">Drug Safety</div>
+                        </div>
+                        <div class="step" data-step="6">
+                            <div class="step-number">6</div>
+                            <div class="step-title">Inventory Check</div>
+                        </div>
+                        <div class="step" data-step="7">
+                            <div class="step-number">7</div>
+                            <div class="step-title">Conflict Resolution</div>
+                        </div>
+                        <div class="step" data-step="8">
+                            <div class="step-number">8</div>
+                            <div class="step-title">Final Approval</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Left Column - Prescription Details -->
+        <div class="col-md-6">
+            <!-- Patient Information -->
+            <div class="card mb-3">
+                <div class="card-header">
+                    <h5><i class="fas fa-user me-2"></i>Patient Information</h5>
+                </div>
+                <div class="card-body">
+                    {% if patient %}
+                    <div class="row">
+                        <div class="col-6">
+                            <strong>Name:</strong><br>{{ patient.name }}
+                        </div>
+                        <div class="col-6">
+                            <strong>Patient ID:</strong><br>{{ patient.id }}
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-6">
+                            <strong>Date of Birth:</strong><br>{{ patient.date_of_birth }}
+                        </div>
+                        <div class="col-6">
+                            <strong>Insurance:</strong><br>
+                            <span class="badge bg-success">{{ patient.insurance_status.title() }}</span>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-12">
+                            <strong>Allergies:</strong><br>
+                            {% if patient.allergies %}
+                                {% for allergy in patient.allergies %}
+                                    <span class="badge bg-danger me-1">{{ allergy }}</span>
+                                {% endfor %}
+                            {% else %}
+                                <span class="text-muted">None reported</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% else %}
+                    <div class="text-danger">Patient information not found</div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- Doctor Information -->
+            <div class="card mb-3">
+                <div class="card-header">
+                    <h5><i class="fas fa-user-md me-2"></i>Doctor Information</h5>
+                </div>
+                <div class="card-body">
+                    {% if doctor %}
+                    <div class="row">
+                        <div class="col-6">
+                            <strong>Name:</strong><br>{{ doctor.name }}
+                        </div>
+                        <div class="col-6">
+                            <strong>License:</strong><br>{{ doctor.license_number }}
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-6">
+                            <strong>Specialization:</strong><br>{{ doctor.specialization }}
+                        </div>
+                        <div class="col-6">
+                            <strong>Status:</strong><br>
+                            <span class="badge bg-success">{{ doctor.status.title() }}</span>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-12">
+                            <strong>Hospital:</strong><br>{{ doctor.hospital }}
+                        </div>
+                    </div>
+                    {% else %}
+                    <div class="text-danger">Doctor information not found</div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- Prescription Details -->
+            <div class="card mb-3">
+                <div class="card-header">
+                    <h5><i class="fas fa-prescription-bottle me-2"></i>Prescription Details</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row mb-3">
+                        <div class="col-6">
+                            <strong>Date:</strong><br>{{ prescription.prescription_date }}
+                        </div>
+                        <div class="col-6">
+                            <strong>Diagnosis:</strong><br>{{ prescription.diagnosis }}
+                        </div>
+                    </div>
+                    
+                    <strong>Prescribed Drugs:</strong>
+                    <div class="table-responsive mt-2">
+                        <table class="table table-sm">
+                            <thead>
+                                <tr>
+                                    <th>Drug</th>
+                                    <th>Dosage</th>
+                                    <th>Frequency</th>
+                                    <th>Quantity</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for drug in prescription.drugs %}
+                                <tr>
+                                    <td><strong>{{ drug.name }}</strong></td>
+                                    <td>{{ drug.dosage }}</td>
+                                    <td>{{ drug.frequency }}</td>
+                                    <td>{{ drug.quantity }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    {% if prescription.notes %}
+                    <div class="mt-3">
+                        <strong>Notes:</strong><br>
+                        <div class="bg-light p-2 rounded">{{ prescription.notes }}</div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Column - Processing Steps -->
+        <div class="col-md-6">
+            <!-- Processing Steps -->
+            <div class="card mb-3">
+                <div class="card-header">
+                    <h5><i class="fas fa-tasks me-2"></i>Processing Steps</h5>
+                </div>
+                <div class="card-body">
+                    <div id="processing-steps">
+                        <!-- Steps will be populated by JavaScript -->
+                    </div>
+                    
+                    <div class="mt-3">
+                        <button id="start-processing" class="btn btn-primary me-2">
+                            <i class="fas fa-play me-1"></i>Start Processing
+                        </button>
+                        <button id="reset-processing" class="btn btn-secondary" style="display: none;">
+                            <i class="fas fa-redo me-1"></i>Reset
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Drug Interactions -->
+            {% if interactions %}
+            <div class="card mb-3">
+                <div class="card-header bg-warning text-dark">
+                    <h5><i class="fas fa-exclamation-triangle me-2"></i>Drug Interactions Detected ({{ interactions|length }})</h5>
+                </div>
+                <div class="card-body">
+                    {% for interaction in interactions %}
+                    <div class="alert {% if interaction.severity == 'high' %}alert-danger{% else %}alert-warning{% endif %} mb-3">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div>
+                                <h6 class="mb-1">
+                                    <i class="fas fa-exclamation-triangle me-1"></i>
+                                    <strong>{{ interaction.drug1 }}</strong> ↔ <strong>{{ interaction.drug2 }}</strong>
+                                </h6>
+                                <p class="mb-2">{{ interaction.warning }}</p>
+                                <div class="small">
+                                    <strong>Recommendation:</strong> {{ interaction.recommendation }}
+                                </div>
+                            </div>
+                            <span class="badge {% if interaction.severity == 'high' %}bg-danger{% else %}bg-warning text-dark{% endif %}">
+                                {{ interaction.severity.title() }} Risk
+                            </span>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+
+            <!-- Prescription History -->
+            {% if prescription_history %}
+            <div class="card mb-3">
+                <div class="card-header">
+                    <h5><i class="fas fa-history me-2"></i>Patient Prescription History</h5>
+                </div>
+                <div class="card-body">
+                    <div class="small mb-2">
+                        <strong>{{ patient.name if patient else 'Unknown Patient' }}</strong> - 
+                        Last {{ prescription_history|length }} prescriptions:
+                    </div>
+                    {% for hist_prescription in prescription_history[:5] %}
+                    <div class="d-flex justify-content-between align-items-center mb-2 p-2 {% if hist_prescription.status == 'approved' %}bg-light{% elif hist_prescription.status == 'rejected' %}bg-danger bg-opacity-10{% endif %} rounded">
+                        <div>
+                            <small><strong>{{ hist_prescription.prescription_date }}</strong></small><br>
+                            <small>
+                                {% for drug in hist_prescription.drugs[:2] %}
+                                    {{ drug.name }}{% if not loop.last %}, {% endif %}
+                                {% endfor %}
+                                {% if hist_prescription.drugs|length > 2 %}
+                                    + {{ hist_prescription.drugs|length - 2 }} more
+                                {% endif %}
+                            </small>
+                        </div>
+                        <span class="badge {% if hist_prescription.status == 'approved' %}bg-success{% elif hist_prescription.status == 'rejected' %}bg-danger{% else %}bg-warning{% endif %}">
+                            {{ hist_prescription.status.title() }}
+                        </span>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+
+            <!-- Drug Recommendations -->
+            {% if drug_recommendations %}
+            <div class="card mb-3">
+                <div class="card-header">
+                    <h5><i class="fas fa-lightbulb me-2"></i>Patient Instructions</h5>
+                </div>
+                <div class="card-body">
+                    {% for drug_rec in drug_recommendations %}
+                    <div class="mb-3">
+                        <h6 class="text-primary">{{ drug_rec.drug }}</h6>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <small><strong>Instructions:</strong><br>{{ drug_rec.recommendations.instructions }}</small><br>
+                                <small><strong>Timing:</strong><br>{{ drug_rec.recommendations.timing }}</small>
+                            </div>
+                            <div class="col-md-6">
+                                <small><strong>Frequency:</strong><br>{{ drug_rec.recommendations.frequency }}</small><br>
+                                <small><strong>Warnings:</strong><br>{{ drug_rec.recommendations.warnings }}</small>
+                            </div>
+                        </div>
+                        <div class="mt-2">
+                            <small class="text-muted"><strong>Refill:</strong> {{ drug_rec.recommendations.refill }}</small>
+                        </div>
+                    </div>
+                    {% if not loop.last %}<hr>{% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+
+            <!-- Inventory Status -->
+            <div class="card mb-3">
+                <div class="card-header">
+                    <h5><i class="fas fa-warehouse me-2"></i>Inventory Status</h5>
+                </div>
+                <div class="card-body">
+                    {% for item in inventory_status %}
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <div>
+                            <strong>{{ item.drug }}</strong><br>
+                            <small>Requested: {{ item.quantity }} units</small>
+                        </div>
+                        <div class="text-end">
+                            {% if item.available %}
+                                <span class="badge bg-success">Available</span>
+                            {% else %}
+                                <span class="badge bg-danger">Low Stock</span>
+                            {% endif %}
+                            <br><small>{{ item.message }}</small>
+                        </div>
+                    </div>
+                    {% if not loop.last %}<hr>{% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Final Actions -->
+            {% if prescription.status == 'pending' %}
+            <div class="card">
+                <div class="card-header">
+                    <h5><i class="fas fa-check-circle me-2"></i>Final Decision</h5>
+                </div>
+                <div class="card-body">
+                    <form method="POST" action="{{ url_for('approve_prescription', prescription_id=prescription.id) }}" class="d-inline">
+                        <button type="submit" class="btn btn-success me-2">
+                            <i class="fas fa-check me-1"></i>Approve Prescription
+                        </button>
+                    </form>
+                    
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#rejectModal">
+                        <i class="fas fa-times me-1"></i>Reject Prescription
+                    </button>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<!-- Reject Modal -->
+<div class="modal fade" id="rejectModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Reject Prescription</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <form method="POST" action="{{ url_for('reject_prescription', prescription_id=prescription.id) }}">
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="reason" class="form-label">Rejection Reason:</label>
+                        <textarea class="form-control" id="reason" name="reason" rows="3" required></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-danger">Reject Prescription</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+// Prescription processing wizard functionality
+const prescriptionId = {{ prescription.id }};
+let currentStep = 0;
+const totalSteps = 8;
+
+const stepTitles = [
+    'Initial Prescription Validation',
+    'Doctor Verification',
+    'Patient Identity Verification',
+    'Active Prescription Search',
+    'Drug Safety Verification',
+    'Inventory Control',
+    'Conflict Resolution',
+    'Final Approval'
+];
+
+function initializeSteps() {
+    const stepsContainer = document.getElementById('processing-steps');
+    stepsContainer.innerHTML = '';
+    
+    for (let i = 1; i <= totalSteps; i++) {
+        const stepDiv = document.createElement('div');
+        stepDiv.className = 'processing-step mb-3';
+        stepDiv.innerHTML = `
+            <div class="d-flex align-items-center">
+                <div class="step-indicator me-3" id="step-${i}-indicator">
+                    <span class="step-number-small">${i}</span>
+                </div>
+                <div class="flex-grow-1">
+                    <h6 class="mb-1">${stepTitles[i-1]}</h6>
+                    <div class="step-status" id="step-${i}-status">Pending</div>
+                </div>
+            </div>
+        `;
+        stepsContainer.appendChild(stepDiv);
+    }
+}
+
+function updateStepStatus(step, status, message) {
+    const indicator = document.getElementById(`step-${step}-indicator`);
+    const statusDiv = document.getElementById(`step-${step}-status`);
+    const progressStep = document.querySelector(`.step[data-step="${step}"]`);
+    
+    indicator.className = 'step-indicator me-3';
+    
+    if (status === 'processing') {
+        indicator.classList.add('processing');
+        statusDiv.innerHTML = '<i class="fas fa-spinner fa-spin me-1"></i>Processing...';
+        statusDiv.className = 'step-status text-primary';
+        if (progressStep) progressStep.classList.add('active');
+    } else if (status === 'success') {
+        indicator.classList.add('success');
+        statusDiv.innerHTML = `<i class="fas fa-check me-1"></i>${message}`;
+        statusDiv.className = 'step-status text-success';
+        if (progressStep) {
+            progressStep.classList.remove('active');
+            progressStep.classList.add('completed');
+        }
+    } else if (status === 'warning') {
+        indicator.classList.add('warning');
+        statusDiv.innerHTML = `<i class="fas fa-exclamation-triangle me-1"></i>${message}`;
+        statusDiv.className = 'step-status text-warning';
+        if (progressStep) {
+            progressStep.classList.remove('active');
+            progressStep.classList.add('completed');
+        }
+        
+        // Show detailed alert for warnings
+        if (step === 5 && message.includes('interactions')) {
+            setTimeout(() => {
+                showWizardAlert(
+                    'Drug Interactions Detected',
+                    'Multiple drug interactions have been found. Please review the detailed interaction information below before proceeding.',
+                    'warning',
+                    [{
+                        text: 'View Details',
+                        type: 'warning',
+                        onclick: 'scrollToInteractions()'
+                    }]
+                );
+            }, 1000);
+        }
+    } else if (status === 'error') {
+        indicator.classList.add('error');
+        statusDiv.innerHTML = `<i class="fas fa-times me-1"></i>${message}`;
+        statusDiv.className = 'step-status text-danger';
+        if (progressStep) {
+            progressStep.classList.remove('active');
+            progressStep.classList.add('error');
+        }
+        
+        // Show error alert
+        setTimeout(() => {
+            showWizardAlert(
+                'Processing Error',
+                `Step ${step}: ${message}. Please resolve this issue before continuing.`,
+                'error',
+                [{
+                    text: 'Review Issue',
+                    type: 'danger',
+                    onclick: 'focusOnIssue()'
+                }]
+            );
+        }, 1000);
+    }
+}
+
+function scrollToInteractions() {
+    const interactionsCard = document.querySelector('.card .card-header h5:contains("Drug Interactions")');
+    if (interactionsCard) {
+        interactionsCard.closest('.card').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+}
+
+function focusOnIssue() {
+    // Scroll to the current processing step
+    const processingSteps = document.getElementById('processing-steps');
+    if (processingSteps) {
+        processingSteps.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+}
+
+async function processStep(step) {
+    updateStepStatus(step, 'processing');
+    
+    try {
+        const response = await fetch('/process_step', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                step: step,
+                prescription_id: prescriptionId
+            })
+        });
+        
+        const result = await response.json();
+        
+        // Simulate processing delay
+        await new Promise(resolve => setTimeout(resolve, 1500 + Math.random() * 1000));
+        
+        updateStepStatus(step, result.status, result.message);
+        
+        return result.status !== 'error';
+    } catch (error) {
+        updateStepStatus(step, 'error', 'Processing failed');
+        return false;
+    }
+}
+
+async function startProcessing() {
+    const startBtn = document.getElementById('start-processing');
+    const resetBtn = document.getElementById('reset-processing');
+    
+    startBtn.style.display = 'none';
+    resetBtn.style.display = 'inline-block';
+    
+    for (let step = 1; step <= totalSteps; step++) {
+        const success = await processStep(step);
+        if (!success) {
+            break;
+        }
+    }
+}
+
+function resetProcessing() {
+    currentStep = 0;
+    initializeSteps();
+    
+    // Reset progress steps
+    document.querySelectorAll('.step').forEach(step => {
+        step.classList.remove('active', 'completed', 'error');
+    });
+    
+    const startBtn = document.getElementById('start-processing');
+    const resetBtn = document.getElementById('reset-processing');
+    
+    startBtn.style.display = 'inline-block';
+    resetBtn.style.display = 'none';
+}
+
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', function() {
+    initializeSteps();
+    
+    document.getElementById('start-processing').addEventListener('click', startProcessing);
+    document.getElementById('reset-processing').addEventListener('click', resetProcessing);
+});
+</script>
+{% endblock %}

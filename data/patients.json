@@ -1,0 +1,62 @@
+[
+  {
+    "id": "P001",
+    "name": "Ana Marković",
+    "date_of_birth": "1985-03-15",
+    "insurance_id": "INS001",
+    "phone": "+381-11-123-4567",
+    "address": "Knez Mihailova 10, Belgrade",
+    "email": "ana.markovic@email.com",
+    "insurance_status": "active",
+    "allergies": ["penicillin"],
+    "medical_conditions": ["hypertension"]
+  },
+  {
+    "id": "P002",
+    "name": "Marko Petrović",
+    "date_of_birth": "1978-07-22",
+    "insurance_id": "INS002",
+    "phone": "+381-21-987-6543",
+    "address": "Novi Sad, Dunavska 25",
+    "email": "marko.petrovic@email.com",
+    "insurance_status": "active",
+    "allergies": [],
+    "medical_conditions": ["diabetes type 2"]
+  },
+  {
+    "id": "P003",
+    "name": "Milica Jovanović",
+    "date_of_birth": "1992-11-08",
+    "insurance_id": "INS003",
+    "phone": "+381-18-555-0123",
+    "address": "Niš, Obrenovićeva 5",
+    "email": "milica.jovanovic@email.com",
+    "insurance_status": "active",
+    "allergies": ["aspirin"],
+    "medical_conditions": []
+  },
+  {
+    "id": "P004",
+    "name": "Stefan Nikolić",
+    "date_of_birth": "1965-12-30",
+    "insurance_id": "INS004",
+    "phone": "+381-11-777-8899",
+    "address": "Belgrade, Terazije 12",
+    "email": "stefan.nikolic@email.com",
+    "insurance_status": "active",
+    "allergies": [],
+    "medical_conditions": ["heart disease", "high cholesterol"]
+  },
+  {
+    "id": "P005",
+    "name": "Jovana Stojanović",
+    "date_of_birth": "1989-05-18",
+    "insurance_id": "INS005",
+    "phone": "+381-24-333-2211",
+    "address": "Subotica, Matije Korvina 8",
+    "email": "jovana.stojanovic@email.com",
+    "insurance_status": "active",
+    "allergies": ["sulfa drugs"],
+    "medical_conditions": ["asthma"]
+  }
+]

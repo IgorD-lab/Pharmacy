@@ -1,0 +1,57 @@
+[
+  {
+    "id": "D001",
+    "name": "Dr. Petar Milenković",
+    "license_number": "LIC001",
+    "specialization": "Internal Medicine",
+    "hospital": "Clinical Center of Serbia",
+    "phone": "+381-11-361-6161",
+    "email": "petar.milenkovic@kcs.ac.rs",
+    "status": "active",
+    "chamber_verified": true
+  },
+  {
+    "id": "D002",
+    "name": "Dr. Marija Đorđević",
+    "license_number": "LIC002",
+    "specialization": "Cardiology",
+    "hospital": "Institute for Cardiovascular Diseases",
+    "phone": "+381-11-361-7777",
+    "email": "marija.djordjevic@cardio.rs",
+    "status": "active",
+    "chamber_verified": true
+  },
+  {
+    "id": "D003",
+    "name": "Dr. Aleksandar Popović",
+    "license_number": "LIC003",
+    "specialization": "Endocrinology",
+    "hospital": "Clinical Center Novi Sad",
+    "phone": "+381-21-484-3484",
+    "email": "aleksandar.popovic@kcns.rs",
+    "status": "active",
+    "chamber_verified": true
+  },
+  {
+    "id": "D004",
+    "name": "Dr. Jelena Stanković",
+    "license_number": "LIC004",
+    "specialization": "General Practice",
+    "hospital": "Health Center Belgrade",
+    "phone": "+381-11-344-4444",
+    "email": "jelena.stankovic@dzb.rs",
+    "status": "active",
+    "chamber_verified": true
+  },
+  {
+    "id": "D005",
+    "name": "Dr. Miloš Radić",
+    "license_number": "LIC005",
+    "specialization": "Pulmonology",
+    "hospital": "Institute for Pulmonary Diseases",
+    "phone": "+381-11-361-8888",
+    "email": "milos.radic@ipb.ac.rs",
+    "status": "active",
+    "chamber_verified": true
+  }
+]
