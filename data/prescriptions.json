@@ -1,0 +1,267 @@
+[
+  {
+    "id": 1,
+    "patient_id": "P001",
+    "doctor_id": "D001",
+    "prescription_date": "2024-01-15",
+    "status": "pending",
+    "drugs": [
+      {
+        "name": "Lisinopril",
+        "dosage": "10mg",
+        "frequency": "Once daily",
+        "quantity": 30,
+        "instructions": "Take in the morning with food"
+      },
+      {
+        "name": "Aspirin",
+        "dosage": "100mg",
+        "frequency": "Once daily",
+        "quantity": 30,
+        "instructions": "Take after meals"
+      }
+    ],
+    "diagnosis": "Hypertension",
+    "notes": "Monitor blood pressure regularly",
+    "created_at": "2024-01-15T10:30:00",
+    "approved_by": "pharmacist1",
+    "approved_at": "2025-06-11T11:58:25.283165"
+  },
+  {
+    "id": 2,
+    "patient_id": "P002",
+    "doctor_id": "D003",
+    "prescription_date": "2024-01-16",
+    "status": "pending",
+    "drugs": [
+      {
+        "name": "Metformin",
+        "dosage": "500mg",
+        "frequency": "Twice daily",
+        "quantity": 60,
+        "instructions": "Take with meals"
+      }
+    ],
+    "diagnosis": "Type 2 Diabetes",
+    "notes": "Check blood sugar levels regularly",
+    "created_at": "2024-01-16T14:20:00",
+    "approved_by": "pharmacist1",
+    "approved_at": "2025-06-11T11:58:57.064034"
+  },
+  {
+    "id": 3,
+    "patient_id": "P005",
+    "doctor_id": "D005",
+    "prescription_date": "2024-01-17",
+    "status": "pending",
+    "drugs": [
+      {
+        "name": "Salbutamol",
+        "dosage": "100mcg",
+        "frequency": "As needed",
+        "quantity": 1,
+        "instructions": "Use inhaler when experiencing breathing difficulties"
+      }
+    ],
+    "diagnosis": "Asthma exacerbation",
+    "notes": "Emergency inhaler - carry at all times",
+    "created_at": "2024-01-17T09:45:00",
+    "approved_by": "pharmacist1",
+    "approved_at": "2025-06-11T11:58:50.825299"
+  },
+  {
+    "id": 4,
+    "patient_id": "P004",
+    "doctor_id": "D002",
+    "prescription_date": "2024-01-18",
+    "status": "pending",
+    "drugs": [
+      {
+        "name": "Atorvastatin",
+        "dosage": "20mg",
+        "frequency": "Once daily",
+        "quantity": 30,
+        "instructions": "Take in the evening"
+      },
+      {
+        "name": "Warfarin",
+        "dosage": "5mg",
+        "frequency": "Once daily",
+        "quantity": 30,
+        "instructions": "Take at the same time daily, monitor INR"
+      }
+    ],
+    "diagnosis": "High cholesterol and atrial fibrillation",
+    "notes": "Regular blood tests required for INR monitoring",
+    "created_at": "2024-01-18T11:15:00",
+    "approved_by": "pharmacist1",
+    "approved_at": "2024-01-18T16:30:00"
+  },
+  {
+    "id": 5,
+    "patient_id": "P003",
+    "doctor_id": "D004",
+    "prescription_date": "2024-01-19",
+    "status": "pending",
+    "drugs": [
+      {
+        "name": "Amoxicillin",
+        "dosage": "500mg",
+        "frequency": "Three times daily",
+        "quantity": 21,
+        "instructions": "Complete the full course even if symptoms improve"
+      }
+    ],
+    "diagnosis": "Bacterial infection",
+    "notes": "7-day course of antibiotics",
+    "created_at": "2024-01-19T13:20:00",
+    "rejected_by": "pharmacist1",
+    "rejected_at": "2025-06-08T16:42:48.281319",
+    "rejection_reason": "Questionable stock",
+    "approved_by": "pharmacist1",
+    "approved_at": "2025-06-11T11:59:36.347176"
+  },
+  {
+    "id": 6,
+    "patient_id": "P006",
+    "doctor_id": "D006",
+    "prescription_date": "2025-01-10",
+    "status": "pending",
+    "drugs": [
+      {
+        "name": "Tamiflu",
+        "dosage": "75mg",
+        "frequency": "Twice daily",
+        "quantity": 10,
+        "instructions": "Take with food, complete full course"
+      }
+    ],
+    "diagnosis": "Influenza A",
+    "notes": "Patient presents with flu symptoms during peak season",
+    "created_at": "2025-01-10T09:30:00",
+    "rejected_by": "pharmacist1",
+    "rejected_at": "2025-06-11T12:00:21.524785",
+    "rejection_reason": "s"
+  },
+  {
+    "id": 7,
+    "patient_id": "P007",
+    "doctor_id": "D007",
+    "prescription_date": "2025-01-11",
+    "status": "pending",
+    "drugs": [
+      {
+        "name": "Hydroxychloroquine",
+        "dosage": "200mg",
+        "frequency": "Twice daily",
+        "quantity": 60,
+        "instructions": "Take with meals"
+      }
+    ],
+    "diagnosis": "Rheumatoid Arthritis",
+    "notes": "Long-term treatment",
+    "created_at": "2025-01-11T14:45:00",
+    "rejected_by": "pharmacist1",
+    "rejected_at": "2025-06-11T12:01:31.868521",
+    "rejection_reason": "sdfsdfdsfs"
+  },
+  {
+    "id": 8,
+    "patient_id": "P008",
+    "doctor_id": "D999",
+    "prescription_date": "2025-01-12",
+    "status": "pending",
+    "drugs": [
+      {
+        "name": "Aspirin",
+        "dosage": "100mg",
+        "frequency": "Once daily",
+        "quantity": 30,
+        "instructions": "Take after breakfast"
+      }
+    ],
+    "diagnosis": "Migraine prevention",
+    "notes": "Preventive therapy",
+    "created_at": "2025-01-12T11:20:00"
+  },
+  {
+    "id": 9,
+    "patient_id": "P009",
+    "doctor_id": "D003",
+    "prescription_date": "2025-01-13",
+    "status": "pending",
+    "drugs": [
+      {
+        "name": "Insulin",
+        "dosage": "10 units",
+        "frequency": "Three times daily",
+        "quantity": 300,
+        "instructions": "Inject before meals"
+      },
+      {
+        "name": "Lisinopril",
+        "dosage": "20mg",
+        "frequency": "Once daily",
+        "quantity": 30,
+        "instructions": "Take in morning"
+      }
+    ],
+    "diagnosis": "Diabetes Type 1 with Hypertension",
+    "notes": "Monitor blood glucose and blood pressure",
+    "created_at": "2025-01-13T16:10:00"
+  },
+  {
+    "id": 10,
+    "patient_id": "P010",
+    "doctor_id": "D008",
+    "prescription_date": "2025-01-14",
+    "status": "pending",
+    "drugs": [
+      {
+        "name": "Ibuprofen",
+        "dosage": "400mg",
+        "frequency": "Three times daily",
+        "quantity": 60,
+        "instructions": "Take with food"
+      },
+      {
+        "name": "Paracetamol",
+        "dosage": "500mg",
+        "frequency": "Four times daily",
+        "quantity": 80,
+        "instructions": "For pain relief"
+      }
+    ],
+    "diagnosis": "Post-surgical pain management",
+    "notes": "Recent orthopedic surgery",
+    "created_at": "2025-01-14T10:00:00"
+  },
+  {
+    "id": 11,
+    "patient_id": "P001",
+    "doctor_id": "D001",
+    "prescription_date": "2025-01-15",
+    "status": "approved",
+    "drugs": [
+      {
+        "name": "Warfarin",
+        "dosage": "5mg",
+        "frequency": "Once daily",
+        "quantity": 30,
+        "instructions": "Take at same time each day"
+      },
+      {
+        "name": "Azithromycin",
+        "dosage": "250mg",
+        "frequency": "Once daily",
+        "quantity": 5,
+        "instructions": "5-day course"
+      }
+    ],
+    "diagnosis": "Atrial fibrillation + Respiratory infection",
+    "notes": "Monitor INR levels closely",
+    "created_at": "2025-01-15T13:30:00",
+    "approved_by": "admin",
+    "approved_at": "2025-06-11T14:08:15.391082"
+  }
+]

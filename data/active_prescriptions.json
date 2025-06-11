@@ -1,0 +1,62 @@
+[
+  {
+    "id": "AP001",
+    "patient_id": "P001",
+    "prescription_id": 4,
+    "drug_name": "Atorvastatin",
+    "dosage": "20mg",
+    "frequency": "Once daily",
+    "start_date": "2024-01-18",
+    "end_date": "2024-02-18",
+    "status": "active",
+    "remaining_refills": 2
+  },
+  {
+    "id": "AP002",
+    "patient_id": "P001",
+    "prescription_id": 4,
+    "drug_name": "Warfarin",
+    "dosage": "5mg",
+    "frequency": "Once daily",
+    "start_date": "2024-01-18",
+    "end_date": "2024-03-18",
+    "status": "active",
+    "remaining_refills": 1
+  },
+  {
+    "id": "AP003",
+    "patient_id": "P002",
+    "prescription_id": 2,
+    "drug_name": "Metformin",
+    "dosage": "500mg",
+    "frequency": "Twice daily",
+    "start_date": "2024-01-16",
+    "end_date": "2024-03-16",
+    "status": "active",
+    "remaining_refills": 3
+  },
+  {
+    "id": "AP004",
+    "patient_id": "P006",
+    "prescription_id": 6,
+    "drug_name": "Warfarin",
+    "dosage": "2mg",
+    "frequency": "Once daily",
+    "start_date": "2024-01-10",
+    "end_date": "2024-04-10",
+    "status": "active",
+    "remaining_refills": 2
+  },
+  {
+    "id": "AP005",
+    "patient_id": "P006",
+    "prescription_id": 7,
+    "drug_name": "Methotrexate",
+    "dosage": "10mg",
+    "frequency": "Once weekly",
+    "start_date": "2024-01-12",
+    "end_date": "2024-04-12",
+    "status": "active",
+    "remaining_refills": 1
+  }
+]

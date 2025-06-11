@@ -1,0 +1,335 @@
+/* Pharmacy System Custom Styles */
+
+:root {
+    --primary-color: #0d6efd;
+    --success-color: #198754;
+    --warning-color: #ffc107;
+    --danger-color: #dc3545;
+    --info-color: #0dcaf0;
+    --light-color: #f8f9fa;
+    --dark-color: #212529;
+}
+
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Navigation */
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+/* Cards */
+.card {
+    border: none;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    border-radius: 0.5rem;
+}
+
+.card-header {
+    background-color: var(--light-color);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+    font-weight: 600;
+}
+
+/* Progress Steps */
+.progress-steps {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    margin: 2rem 0;
+}
+
+.progress-steps::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: #e9ecef;
+    z-index: 1;
+}
+
+.step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: white;
+    padding: 0 1rem;
+    position: relative;
+    z-index: 2;
+}
+
+.step-number {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background-color: #e9ecef;
+    color: #6c757d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.step-title {
+    font-size: 0.875rem;
+    text-align: center;
+    color: #6c757d;
+    max-width: 120px;
+}
+
+.step.active .step-number {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.step.active .step-title {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.step.completed .step-number {
+    background-color: var(--success-color);
+    color: white;
+}
+
+.step.completed .step-title {
+    color: var(--success-color);
+}
+
+.step.error .step-number {
+    background-color: var(--danger-color);
+    color: white;
+}
+
+.step.error .step-title {
+    color: var(--danger-color);
+}
+
+/* Processing Steps in Wizard */
+.processing-step {
+    padding: 1rem;
+    border: 1px solid #e9ecef;
+    border-radius: 0.5rem;
+    background-color: white;
+}
+
+.step-indicator {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    background-color: #e9ecef;
+    color: #6c757d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.step-number-small {
+    font-size: 0.875rem;
+}
+
+.step-indicator.processing {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.step-indicator.success {
+    background-color: var(--success-color);
+    color: white;
+}
+
+.step-indicator.warning {
+    background-color: var(--warning-color);
+    color: var(--dark-color);
+}
+
+.step-indicator.error {
+    background-color: var(--danger-color);
+    color: white;
+}
+
+/* Tables */
+.table th {
+    border-top: none;
+    font-weight: 600;
+}
+
+.table th.sortable {
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.2s ease;
+}
+
+.table th.sortable:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.table th.sortable i {
+    font-size: 0.8rem;
+    opacity: 0.6;
+    margin-left: 0.5rem;
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(0, 0, 0, 0.025);
+}
+
+/* Search and filter controls */
+.form-control-sm, .form-select-sm {
+    border-radius: 0.375rem;
+}
+
+/* Badges */
+.badge {
+    font-size: 0.75rem;
+}
+
+/* Buttons */
+.btn {
+    border-radius: 0.375rem;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+}
+
+.btn-sm {
+    padding: 0.25rem 0.75rem;
+    font-size: 0.875rem;
+}
+
+/* Alerts */
+.alert {
+    border: none;
+    border-radius: 0.5rem;
+}
+
+/* Modal */
+.modal-content {
+    border: none;
+    border-radius: 0.5rem;
+}
+
+.modal-header {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.modal-footer {
+    border-top: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+/* Statistics Cards */
+.card.bg-primary,
+.card.bg-success,
+.card.bg-warning,
+.card.bg-info {
+    border: none;
+}
+
+.card.bg-warning {
+    color: var(--dark-color) !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .progress-steps {
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+    
+    .progress-steps::before {
+        display: none;
+    }
+    
+    .step {
+        flex-direction: row;
+        padding: 0.5rem;
+        background-color: transparent;
+    }
+    
+    .step-number {
+        width: 2rem;
+        height: 2rem;
+        margin-bottom: 0;
+        margin-right: 0.75rem;
+    }
+    
+    .step-title {
+        text-align: left;
+        max-width: none;
+    }
+}
+
+/* Login page specific styles */
+.container .card.shadow {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Footer */
+footer {
+    margin-top: auto;
+}
+
+/* Custom scrollbar for webkit browsers */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+/* Animation for processing steps */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.fa-spinner.fa-spin {
+    animation: spin 1s linear infinite;
+}
+
+/* Drug interaction warning styling */
+.alert-warning.d-flex {
+    background-color: #fff3cd;
+    border-color: #ffecb5;
+}
+
+/* Success and error state transitions */
+.step-indicator,
+.step-number {
+    transition: all 0.3s ease-in-out;
+}
+
+/* Print styles */
+@media print {
+    .navbar,
+    .btn,
+    footer {
+        display: none !important;
+    }
+    
+    .card {
+        box-shadow: none !important;
+        border: 1px solid #dee2e6 !important;
+    }
+    
+    .container-fluid {
+        padding: 0 !important;
+    }
+}

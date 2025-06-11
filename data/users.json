@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "username": "pharmacist1",
+    "password": "pharmacy123",
+    "role": "pharmacist",
+    "name": "Miloš Petrović",
+    "email": "milos.petrovic@pharmacy.rs",
+    "license_number": "PHARM001"
+  },
+  {
+    "id": 2,
+    "username": "pharmacist2",
+    "password": "pharmacy456",
+    "role": "pharmacist",
+    "name": "Jelena Marković",
+    "email": "jelena.markovic@pharmacy.rs",
+    "license_number": "PHARM002"
+  },
+  {
+    "id": 3,
+    "username": "admin",
+    "password": "admin123",
+    "role": "admin",
+    "name": "Administrator",
+    "email": "admin@pharmacy.rs",
+    "license_number": "ADMIN001"
+  }
+]
